@@ -1,2 +1,2 @@
 # accordion
-https://anvp-dev.github.io/accordion/
+simple accordion
