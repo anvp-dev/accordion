@@ -1,30 +1,13 @@
-const accordion = () => {
-  const accordions = document.querySelectorAll(".accordion");
+const accordion = (selector) => {
+  const btn = document.querySelectorAll(`${selector} .accordion-btn`);
+  const content = document.querySelectorAll(`${selector} .accordion-content`);
 
-  accordions.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      if (e.target.classList.contains("accordion__button")) {
-        const accordionItems = Array.from(
-          e.target.closest(".accordion").children
-        );
-        const accordionActive = e.target.closest(".accordion__item");
-
-        function showOneSlide() {
-          accordionItems.forEach((item) => {
-            item.classList.remove("is-active");
-          });
-          accordionActive.classList.add("is-active");
-        }
-
-        function toggleSlide() {
-          accordionActive.classList.toggle("is-active");
-        }
-
-        showOneSlide();
-        // toggleSlide()
-      }
-    });
-  });
+  btn.forEach((item, index) =>
+    item.addEventListener("click", () => {
+      item.classList.toggle("acc-btn-active");
+      content[index].classList.toggle("acc-content-active");
+    })
+  );
 };
 
-export default accordion;
+accordion(".acc");
